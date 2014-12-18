@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Friendbook</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+          <div class="header">
+            <nav>
+              <ul class="nav nav-pills pull-right">
+                <li role="presentation">
+                  <%= link_to "Timeline", timeline_path %>
+                </li>
+                <li role="presentation">
+                  <%= link_to "Users", users_path %>
+                </li>
+                <li role="presentation">
+                  <%= link_to "Friends", friends_path %>
+                </li>
+                <li role="presentation" class="active">
+                  <% if current_user.present? %>
+                    <%= link_to current_user.name, session_path, data:{confirm: 'Sign Out?'}, method: "DELETE" %>
+                  <% else %>
+                    <%= link_to "Sign In", new_session_path %>
+                  <% end %>
+                </li>
+              </ul>
+            </nav>
+            <h3 class="text-muted">
+              <%= link_to "Friendbook", root_path %>
+            </h3>
+          </div>
+          <% if flash[:notice] %>
+            <div class="alert alert-info" role="alert">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+
+          <footer class="footer">
+            <p>&copy; Friendbook 
+            	<script type="text/javascript">
+								//<![CDATA[
+								var d = new Date()
+								document.write(d.getFullYear())
+								//]]>
+							</script>
+						</p>
+          </footer>
+
+        </div> <!-- /container -->
+  </body>
+</html>
