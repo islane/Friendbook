@@ -1,0 +1,15 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "jumbotron-narrow";
+@import "font-awesome.min";
+@import "friendbook";
+
+
+.button_to {
+  display: inline;
+}
